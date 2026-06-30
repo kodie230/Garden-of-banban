@@ -1,0 +1,7 @@
+{
+  "cheaters": {
+    "cheater_voice": [
+      { "sounds": [ "cheaters/voices/default.ogg" ], "stream": false }
+    ]
+  }
+}

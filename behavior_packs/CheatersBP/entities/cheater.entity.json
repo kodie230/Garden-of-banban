@@ -1,0 +1,41 @@
+{
+  "format_version": "1.16.0",
+  "minecraft:entity": {
+    "description": {
+      "identifier": "cheaters:cheater",
+      "is_spawnable": true,
+      "is_summonable": true,
+      "is_experimental": false,
+      "materials": { "default": "entity_alphatest" },
+      "textures": { "default": "textures/entity/cheater" },
+      "scripts": {}
+    },
+    "components": {
+      "minecraft:health": { "value": 20, "max": 20 },
+      "minecraft:movement": {},
+      "minecraft:nameable": { "always_show": true },
+      "minecraft:behavior.random_stroll": { "priority": 2, "speed_multiplier": 1.0 },
+      "minecraft:behavior.look_at_player": { "priority": 1, "look_distance": 6.0 },
+      "minecraft:damage_sensor": {
+        "triggers": {
+          "any_damage": [
+            {
+              "event": "cheater:attacked"
+            }
+          ]
+        }
+      }
+    },
+    "events": {
+      "cheater:attacked": {
+        "sequence": [
+          {
+            "run_command": {
+              "command": "say [CHEATER_EVENT] attacked_by {last_damager}"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

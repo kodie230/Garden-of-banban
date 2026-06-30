@@ -1,0 +1,28 @@
+{
+  "bdsLogPath": "/path/to/bedrock_server.log",
+  "rcon": {
+    "host": "127.0.0.1",
+    "port": 19132,
+    "password": "YOUR_RCON_PASSWORD"
+  },
+  "openai": {
+    "apiKey": "PUT_OPENAI_KEY_HERE",
+    "model": "gpt-4o-mini"
+  },
+  "elevenlabs": {
+    "apiKey": "PUT_ELEVENLABS_KEY_HERE",
+    "voice": "alloy"
+  },
+  "resourcePack": {
+    "resourcePackPath": "../resource_packs/CheatersRP",
+    "servePort": 3000,
+    "packFilename": "CheatersRP_update.zip",
+    "publicHost": "YOUR_SERVER_IP"
+  },
+  "chat": {
+    "hearDistance": 20,
+    "chatRegex": ".*<(.+)> (.+)$",
+    "attackRegex": ".*\\[CHEATER_EVENT\\] attacked_by (.+)$"
+  },
+  "debug": true
+}
