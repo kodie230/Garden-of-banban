@@ -1,0 +1,34 @@
+name: Build MCPACK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Create texture placeholder
+        run: |
+          mkdir -p resource_packs/BanbanRP/textures/entity
+          echo "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR4nGNgYAAAAAMAAWgmWQ0AAAAASUVORK5CYII=" | base64 -d > resource_packs/BanbanRP/textures/entity/banban.png
+      
+      - name: Create default sound placeholder
+        run: |
+          mkdir -p resource_packs/BanbanRP/sounds/banbans/voices
+          touch resource_packs/BanbanRP/sounds/banbans/voices/default.ogg
+      
+      - name: Build MCPACK
+        run: |
+          chmod +x build_mcpack.sh
+          ./build_mcpack.sh
+      
+      - name: Upload MCPACK artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: GardenOfBanban
+          path: dist/GardenOfBanban.mcpack
+          retention-days: 30
