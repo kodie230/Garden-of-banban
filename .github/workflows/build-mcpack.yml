@@ -25,7 +25,13 @@ jobs:
       
       - name: Build MCPACK
         run: |
-          chmod +x build_mcpack.sh
+          chmod +x #!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p dist
+cd resource_packs
+zip -r ../dist/GardenOfBanban.mcpack BanbanRP
+
           ./build_mcpack.sh
       
       - name: Upload MCPACK artifact
